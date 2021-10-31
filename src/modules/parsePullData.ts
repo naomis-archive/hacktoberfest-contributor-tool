@@ -68,7 +68,7 @@ export const parsePullData = (
       ? new Date(pull.merged_at).getTime()
       : null;
 
-    if ((!mergedTime || mergedTime > endTime) && !hasLabel) {
+    if (mergedTime && mergedTime > endTime && !hasLabel) {
       logHandler.log(
         "warn",
         `Pull #${pull.number} does not have the label and was not merged prior to the end of the event.`
@@ -92,6 +92,14 @@ export const parsePullData = (
       logHandler.log(
         "warn",
         `Pull #${pull.number} was closed but not merged, and does not have hacktoberfest-accepted label.`
+      );
+      return;
+    }
+
+    if (!pull.closed_at && !pull.merged_at && !hasLabel) {
+      logHandler.log(
+        "warn",
+        `Pull #${pull.number} is still open and not labelled, so does not count (yet).`
       );
       return;
     }

@@ -113,6 +113,19 @@ export const pullIsClosedUnmerged: TestPullRequest = {
   user: realUser,
 };
 
+/**
+ * PR is open, not merged, and not labelled.
+ *
+ * @see The test call for this MUST have hasTopic set to true.
+ */
+export const pullIsOpenedAndNotLabelled: TestPullRequest = {
+  number: 9,
+  created_at: validDate,
+  merged_at: null,
+  closed_at: null,
+  user: realUser,
+};
+
 /* Valid Data Examples */
 
 /**
@@ -121,7 +134,7 @@ export const pullIsClosedUnmerged: TestPullRequest = {
  * @see The test call for this MUST have hasTopic set to true.
  */
 export const pullIsMerged: TestPullRequest = {
-  number: 9,
+  number: 10,
   created_at: validDate,
   merged_at: validDate,
   closed_at: validDate,
@@ -132,7 +145,7 @@ export const pullIsMerged: TestPullRequest = {
  * This PR was closed but has the `hacktoberfest-accepted` label.
  */
 export const pullIsClosedButLabelled: TestPullRequest = {
-  number: 10,
+  number: 11,
   created_at: validDate,
   merged_at: validDate,
   closed_at: validDate,
@@ -145,7 +158,7 @@ export const pullIsClosedButLabelled: TestPullRequest = {
  */
 
 export const pullIsNotMergedButLabelled: TestPullRequest = {
-  number: 11,
+  number: 12,
   created_at: validDate,
   merged_at: null,
   closed_at: null,

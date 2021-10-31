@@ -9,6 +9,7 @@ import {
   pullMergedLate,
   pullIsSpam,
   pullIsClosedUnmerged,
+  pullIsOpenedAndNotLabelled,
   pullIsMerged,
   pullIsClosedButLabelled,
   pullIsNotMergedButLabelled,
@@ -74,6 +75,14 @@ suite("Invalid PRs", () => {
 
   suite("Pull request is closed as unmerged", () => {
     const result = parsePullData([pullIsClosedUnmerged], true);
+
+    test("should not count the PR", () => {
+      assert.isEmpty(result, "The pull request was counted!");
+    });
+  });
+
+  suite("Pull request is still open but not labelled", () => {
+    const result = parsePullData([pullIsOpenedAndNotLabelled], true);
 
     test("should not count the PR", () => {
       assert.isEmpty(result, "The pull request was counted!");
