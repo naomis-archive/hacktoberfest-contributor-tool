@@ -87,8 +87,11 @@ export const parsePullData = (
       return;
     }
 
-    if (pull.closed_at && !pull.merged_at) {
-      logHandler.log("warn", `Pull #${pull.number} was closed but not merged.`);
+    if (pull.closed_at && !pull.merged_at && !hasLabel) {
+      logHandler.log(
+        "warn",
+        `Pull #${pull.number} was closed but not merged, and does not have hacktoberfest-accepted label.`
+      );
       return;
     }
 
