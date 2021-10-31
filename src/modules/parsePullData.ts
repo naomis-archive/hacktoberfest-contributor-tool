@@ -1,5 +1,6 @@
 import { endTime, startTime } from "../config/dates";
 import { PullRequest } from "../interfaces/PullRequest";
+import { TestPullRequest } from "../interfaces/TestPullRequest";
 import { logHandler } from "../utils/logHandler";
 
 /**
@@ -11,7 +12,7 @@ import { logHandler } from "../utils/logHandler";
  * @returns {Object} Map of pull authors + their counts.
  */
 export const parsePullData = (
-  pulls: PullRequest[],
+  pulls: (PullRequest | TestPullRequest)[],
   hasTopic: boolean
 ): { [key: string]: number } => {
   logHandler.log("info", "Parsing pull data...");
@@ -29,7 +30,7 @@ export const parsePullData = (
     if (new Date(pull.created_at).getTime() < startTime) {
       logHandler.log(
         "warn",
-        `Pull ${pull.number} was created before the event started.`
+        `Pull #${pull.number} was created before the event started.`
       );
       return;
     }
@@ -37,7 +38,7 @@ export const parsePullData = (
     if (new Date(pull.created_at).getTime() > endTime) {
       logHandler.log(
         "warn",
-        `Pull ${pull.number} was created after the event ended.`
+        `Pull #${pull.number} was created after the event ended.`
       );
       return;
     }
@@ -67,7 +68,7 @@ export const parsePullData = (
       ? new Date(pull.merged_at).getTime()
       : null;
 
-    if ((!mergedTime || mergedTime > endTime) && !hasLabel) {
+    if (mergedTime && mergedTime > endTime && !hasLabel) {
       logHandler.log(
         "warn",
         `Pull #${pull.number} does not have the label and was not merged prior to the end of the event.`
@@ -91,6 +92,14 @@ export const parsePullData = (
       logHandler.log(
         "warn",
         `Pull #${pull.number} was closed but not merged, and does not have hacktoberfest-accepted label.`
+      );
+      return;
+    }
+
+    if (!pull.closed_at && !pull.merged_at && !hasLabel) {
+      logHandler.log(
+        "warn",
+        `Pull #${pull.number} is still open and not labelled, so does not count (yet).`
       );
       return;
     }
