@@ -75,6 +75,23 @@ export const parsePullData = (
       return;
     }
 
+    const isSpam = pull.labels?.find((label) =>
+      label.name?.match(/\bspam|invalid\b/i)
+    );
+
+    if (isSpam) {
+      logHandler.log(
+        "warn",
+        `Pull #${pull.number} has been labelled as spam/invalid.`
+      );
+      return;
+    }
+
+    if (pull.closed_at && !pull.merged_at) {
+      logHandler.log("warn", `Pull #${pull.number} was closed but not merged.`);
+      return;
+    }
+
     logHandler.log(
       "info",
       `Pull #${pull.number} appears to be valid and has been counted!`
