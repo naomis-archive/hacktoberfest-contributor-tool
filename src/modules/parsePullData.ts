@@ -1,4 +1,4 @@
-import { endTime } from "../config/dates";
+import { endTime, startTime } from "../config/dates";
 import { PullRequest } from "../interfaces/PullRequest";
 import { logHandler } from "../utils/logHandler";
 
@@ -26,13 +26,18 @@ export const parsePullData = (
       return;
     }
 
-    if (
-      new Date(pull.created_at).getTime() <
-      new Date("2021-10-01T00:00:00Z").getTime()
-    ) {
+    if (new Date(pull.created_at).getTime() < startTime) {
       logHandler.log(
         "warn",
         `Pull ${pull.number} was created before the event started.`
+      );
+      return;
+    }
+
+    if (new Date(pull.created_at).getTime() > endTime) {
+      logHandler.log(
+        "warn",
+        `Pull ${pull.number} was created after the event ended.`
       );
       return;
     }

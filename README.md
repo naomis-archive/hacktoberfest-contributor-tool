@@ -16,6 +16,12 @@ When you have everything set up, run `npm run build` to compile the TypeScript i
 
 You will see some output in the terminal - the script will check if the repository has the `hacktoberfest` topic, will query PRs that were created after the event started, and will check each PR against the logic that determines if a contribution is valid. Once this list is compiled, the process will create a `results` directory and save your list to a `owner/repo` Markdown file.
 
+## Logging
+
+The results of a run will also be written to `/results/_runLog.log` so you can audit any excluded PRs if needed. Note that this is a running log, which means if you run this script more than once each run will be appended to the file.
+
+For convenience, runs are broken up by `==RUN BEGIN==` and `==RUN END==`.
+
 ## Feedback and Bugs
 
 If you have feedback or a bug report, please feel free to open a GitHub issue!
