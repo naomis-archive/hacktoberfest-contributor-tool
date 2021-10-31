@@ -1,0 +1,31 @@
+{
+  "name": "hacktoberfest-contributor-generator",
+  "version": "1.0.0",
+  "description": "A tool to generate a list of contributors for a Hacktoberfest event.",
+  "main": "prod/index.js",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src --max-warnings 0",
+    "start": "node -r dotenv/config prod/index.js",
+    "test": "echo \"Error: no test specified\""
+  },
+  "author": "Nicholas Carrigan",
+  "license": "AGPL-3.0-or-later",
+  "dependencies": {
+    "@octokit/rest": "^18.12.0",
+    "dotenv": "^10.0.0",
+    "typescript": "^4.4.4",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "eslint": "^8.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jsdoc": "^37.0.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.4.1"
+  }
+}
