@@ -32,7 +32,10 @@ export const getPullData = async (page: number): Promise<PullRequest[]> => {
     `Got data until ${pulls[pulls.length - 1].created_at}`
   );
 
-  if (new Date(pulls[pulls.length - 1].created_at).getTime() >= startTime) {
+  if (
+    new Date(pulls[pulls.length - 1].created_at).getTime() >= startTime &&
+    pulls.length === 100
+  ) {
     const nextPage = await getPullData(page + 1);
     return [...pulls, ...nextPage];
   }
