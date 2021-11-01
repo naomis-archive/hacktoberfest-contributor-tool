@@ -1,6 +1,6 @@
 {
   "name": "hacktoberfest-contributor-generator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A tool to generate a list of contributors for a Hacktoberfest event.",
   "main": "prod/index.js",
   "scripts": {
