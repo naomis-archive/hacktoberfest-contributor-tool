@@ -9,7 +9,7 @@
     "start": "node -r dotenv/config prod/index.js",
     "test": "ts-mocha -u tdd test/**/*.spec.ts --recursive"
   },
-  "author": "Nicholas Carrigan",
+  "author": "Naomi Carrigan",
   "license": "AGPL-3.0-or-later",
   "dependencies": {
     "@octokit/rest": "^18.12.0",
