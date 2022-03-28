@@ -6,7 +6,7 @@ import { logHandler } from "../utils/logHandler";
 /**
  * Writes the parsed pull data to a file.
  *
- * @param {Object} data The parsed pull request data from GitHub.
+ * @param {object} data The parsed pull request data from GitHub.
  */
 export const writePullData = async (data: {
   [key: string]: number;

@@ -9,7 +9,7 @@ import { logHandler } from "../utils/logHandler";
  *
  * @param {PullRequest[]} pulls The list of pull request objects from GitHub.
  * @param {boolean} hasTopic Whether the repository has the hacktoberfest topic.
- * @returns {Object} Map of pull authors + their counts.
+ * @returns {object} Map of pull authors + their counts.
  */
 export const parsePullData = (
   pulls: (PullRequest | TestPullRequest)[],
