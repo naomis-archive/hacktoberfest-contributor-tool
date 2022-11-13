@@ -2,9 +2,9 @@ import { TestPullRequest } from "../interfaces/TestPullRequest";
 
 /* Configuration Data */
 
-const validDate = "2021-10-15T00:00:00.000Z";
-const earlyDate = "2020-10-15T00:00:00.000Z";
-const lateDate = "2022-10-15T00:00:00.000Z";
+const validDate = "2022-10-15T00:00:00.000Z";
+const earlyDate = "2021-10-15T00:00:00.000Z";
+const lateDate = "2023-10-15T00:00:00.000Z";
 
 const realUser = { type: "User", login: "nhcarrigan" };
 const spamLabel = { name: "spam" };
