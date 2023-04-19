@@ -14,7 +14,7 @@
     "npm": "9.6.4"
   },
   "author": "Naomi Carrigan",
-  "license": "AGPL-3.0-or-later",
+  "license": "MPL-2.0",
   "dependencies": {
     "@octokit/rest": "19.0.7",
     "dotenv": "16.0.3",
