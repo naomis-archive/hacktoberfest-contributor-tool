@@ -10,7 +10,7 @@
     "test": "ts-mocha -u tdd test/**/*.spec.ts --recursive"
   },
   "engines": {
-    "node": "18.16.0",
+    "node": "18.16.1",
     "npm": "9.6.7"
   },
   "author": "Naomi Carrigan",
@@ -24,7 +24,7 @@
   "devDependencies": {
     "@types/chai": "4.3.5",
     "@types/mocha": "10.0.1",
-    "@types/node": "18.16.16",
+    "@types/node": "18.16.19",
     "@typescript-eslint/eslint-plugin": "5.59.7",
     "@typescript-eslint/parser": "5.59.7",
     "chai": "4.3.7",
