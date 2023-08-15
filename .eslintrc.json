@@ -1,3 +1,11 @@
 {
-  "extends": "@nhcarrigan/eslint-config"
+  "extends": "@nhcarrigan/eslint-config",
+  "rules": {
+    "camelcase": [
+      "error",
+      {
+        "allow": ["merged_at", "created_at", "closed_at", "per_page"]
+      }
+    ]
+  }
 }
